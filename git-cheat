@@ -213,6 +213,25 @@ git merge <branch>
 END
 }
 
+function rebase {
+  cat <<END
+git rebase
+==========
+
+git rebase <branch>
+    rebase <branch> with current branch
+
+git rebase master <branch>
+    rebase branch <branch> into the current branch
+
+git rebase --continue
+    Restart the rebasing process after having resolved a merge conflict.
+
+git rebase --abort
+    Alternatively, you can undo the git rebase with option --abort.
+END
+}
+
 function update {
   cat <<END
 updating current repository
@@ -352,6 +371,7 @@ function debug {
 git debugging
 =============
 
+<<<<<<< HEAD
 git blame <file>
     show who authored each line in <file>.
 
@@ -366,7 +386,6 @@ git grep --cached -e <regexp>
 
 git log -G <regexp>
     search for commits whose changes include your regexp.
-
 END
 }
 
@@ -536,6 +555,9 @@ case "$ARG" in
         ;;
     --merge | -m)
         merge
+        ;;
+    --rebase | -rb)
+        rebase
         ;;
     --update | -u)
         update

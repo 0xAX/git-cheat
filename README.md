@@ -24,30 +24,31 @@ Usage: git-cheat [option]
 
 Mandatory arguments:
 
-  --setup -s          --> git setup and configuration 
-  --init -i           --> cration of new project 
-  --add -a            --> adding files to git 
-  --delete -d         --> deleting files from git 
-  --commit -c         --> git commit helper 
-  --branch -b         --> git branching info 
-  --merge -m          --> git merging info 
-  --update -u         --> updating current repo 
-  --stash -st         --> stashing in current repo 
-  --inspect -in       --> git inspection, log,show... 
-  --remote -r         --> git remote helper 
-  --patch -p          --> git patching helper 
-  --debug -dg         --> git debugging 
-  --email -e          --> git email helper 
-  --tags -t           --> git tags helper 
-  --reset -rs         --> git reset helper 
-  --conflict -cn      --> git conflict resolving helper 
-  --revert -rv        --> git reverting helper 
-  --fix-mistakes -f   --> fix mistakes in git 
-  --submodules -sm    --> git submodules helper 
-  --archive -ar       --> archive your repo 
+  --setup -s          --> git setup and configuration
+  --init -i           --> cration of new project
+  --add -a            --> adding files to git
+  --delete -d         --> deleting files from git
+  --commit -c         --> git commit helper
+  --branch -b         --> git branching info
+  --merge -m          --> git merging info
+  --rebase -rb        --> git rebase info
+  --update -u         --> updating current repo
+  --stash -st         --> stashing in current repo
+  --inspect -in       --> git inspection, log,show...
+  --remote -r         --> git remote helper
+  --patch -p          --> git patching helper
+  --debug -dg         --> git debugging
+  --email -e          --> git email helper
+  --tags -t           --> git tags helper
+  --reset -rs         --> git reset helper
+  --conflict -cn      --> git conflict resolving helper
+  --revert -rv        --> git reverting helper
+  --fix-mistakes -f   --> fix mistakes in git
+  --submodules -sm    --> git submodules helper
+  --archive -ar       --> archive your repo
 
   --help -h ?         --> prints usage of git-cheat
-  --version -v        --> prints version of git-cheat 
+  --version -v        --> prints version of git-cheat
 
 Report bugs and contribution at: https://github.com/0xAX/git-cheat
 ```
