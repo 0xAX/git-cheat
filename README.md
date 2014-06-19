@@ -50,6 +50,24 @@ Mandatory arguments:
 Report bugs and contribution at: https://github.com/0xAX/git-cheat
 ```
 
+```shell
+./git-cheat --commit
+
+git commiting
+=============
+
+git commit <file1> <file2> ... [-m <msg>]
+    commit <file1>, <file2>, etc..., optionally using commit message <msg>.
+    otherwise opening your editor to let you type a commit message
+
+git commit -a
+    commit all files changed since your last commit
+
+git commit -v
+    commit verbosely, i.e. includes the diff of the contents being committed in
+    the commit message screen
+```
+
 todo
 -----
 
