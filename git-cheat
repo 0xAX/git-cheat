@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 # command line argument
 ARG=$1
