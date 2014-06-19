@@ -4,607 +4,515 @@
 ARG=$1
 
 # colors
-GREEN="\e[0;32m"
-NO_COLOR="\e[0;0m"
+e=$(printf "\e")
+GREEN="$e[0;32m"
+NO_COLOR="$e[0;0m"
 
 #
 # prints usage of git-cheat
 #
 function usage {
-    echo "Usage: git-cheat [option]"
-    echo ""
-    echo "Mandatory arguments:"
-    
-    echo ""
-    echo -e $GREEN " --config -c"        $NO_COLOR "       --> git configuration" $NO_COLOR
-    echo -e $GREEN " --init -i"          $NO_COLOR "         --> cration of new project" $NO_COLOR
-    echo -e $GREEN " --add -a"           $NO_COLOR "          --> adding files to git" $NO_COLOR
-    echo -e $GREEN " --delete -d"        $NO_COLOR "       --> deleting files from git" $NO_COLOR
-    echo -e $GREEN " --commit -cm"       $NO_COLOR "      --> git commit helper" $NO_COLOR
-    echo -e $GREEN " --branch -b"        $NO_COLOR "       --> git branching info" $NO_COLOR
-    echo -e $GREEN " --merge -m"         $NO_COLOR "        --> git merging info" $NO_COLOR
-    echo -e $GREEN " --update -u"        $NO_COLOR "       --> updating current repo" $NO_COLOR
-    echo -e $GREEN " --stash -st"        $NO_COLOR "       --> stashing in current repo" $NO_COLOR
-    echo -e $GREEN " --inspect -in"      $NO_COLOR "     --> git inspection, log,show..." $NO_COLOR
-    echo -e $GREEN " --remote -r"        $NO_COLOR "       --> git remote helper" $NO_COLOR
-    echo -e $GREEN " --patch -p"         $NO_COLOR "        --> git patching helper" $NO_COLOR
-    echo -e $GREEN " --debug -dg"        $NO_COLOR "       --> git debugging" $NO_COLOR
-    echo -e $GREEN " --email -e"         $NO_COLOR "        --> git email helper" $NO_COLOR
-    echo -e $GREEN " --tags -t"          $NO_COLOR "         --> git tags helper" $NO_COLOR
-    echo -e $GREEN " --reset -rs"        $NO_COLOR "       --> git reset helper" $NO_COLOR
-    echo -e $GREEN " --conflict -cn"     $NO_COLOR "    --> git conflict resolving helper" $NO_COLOR
-    echo -e $GREEN " --revert -rv"       $NO_COLOR "      --> git reverting helper" $NO_COLOR
-    echo -e $GREEN " --fix-mistakes -f"  $NO_COLOR " --> fix mistakes in git" $NO_COLOR
-    echo -e $GREEN " --submodules -sm"   $NO_COLOR "  --> git submodules helper" $NO_COLOR
-    echo -e $GREEN " --archive -ar"      $NO_COLOR "     --> archive your repo" $NO_COLOR
-    echo ""
-    
-    echo -e $GREEN " --help -h ?"    $NO_COLOR "       --> prints usage of git-cheat" $NO_COLLOR
-    echo -e $GREEN " --version -v" $NO_COLOR "      --> prints version of git-cheat" $NO_COLOR
-    echo ""
-    echo -e $WHITE"Report bugs and contribution at: https://github.com/0xAX/git-cheat"
+  cat <<END
+Usage: git-cheat [option]
+
+Mandatory arguments:
+
+$GREEN  --config -c       $NO_COLOR --> git configuration $NO_COLOR
+$GREEN  --init -i         $NO_COLOR --> cration of new project $NO_COLOR
+$GREEN  --add -a          $NO_COLOR --> adding files to git $NO_COLOR
+$GREEN  --delete -d       $NO_COLOR --> deleting files from git $NO_COLOR
+$GREEN  --commit -cm      $NO_COLOR --> git commit helper $NO_COLOR
+$GREEN  --branch -b       $NO_COLOR --> git branching info $NO_COLOR
+$GREEN  --merge -m        $NO_COLOR --> git merging info $NO_COLOR
+$GREEN  --update -u       $NO_COLOR --> updating current repo $NO_COLOR
+$GREEN  --stash -st       $NO_COLOR --> stashing in current repo $NO_COLOR
+$GREEN  --inspect -in     $NO_COLOR --> git inspection, log,show... $NO_COLOR
+$GREEN  --remote -r       $NO_COLOR --> git remote helper $NO_COLOR
+$GREEN  --patch -p        $NO_COLOR --> git patching helper $NO_COLOR
+$GREEN  --debug -dg       $NO_COLOR --> git debugging $NO_COLOR
+$GREEN  --email -e        $NO_COLOR --> git email helper $NO_COLOR
+$GREEN  --tags -t         $NO_COLOR --> git tags helper $NO_COLOR
+$GREEN  --reset -rs       $NO_COLOR --> git reset helper $NO_COLOR
+$GREEN  --conflict -cn    $NO_COLOR --> git conflict resolving helper $NO_COLOR
+$GREEN  --revert -rv      $NO_COLOR --> git reverting helper $NO_COLOR
+$GREEN  --fix-mistakes -f $NO_COLOR --> fix mistakes in git $NO_COLOR
+$GREEN  --submodules -sm  $NO_COLOR --> git submodules helper $NO_COLOR
+$GREEN  --archive -ar     $NO_COLOR --> archive your repo $NO_COLOR
+
+$GREEN  --help -h ?       $NO_COLOR --> prints usage of git-cheat $NO_COLLOR
+$GREEN  --version -v      $NO_COLOR --> prints version of git-cheat $NO_COLOR
+
+Report bugs and contribution at: https://github.com/0xAX/git-cheat
+END
 }
 
 function config {
-    echo ""
-    echo "git configuration"
-    echo "================="
-    echo ""
-    
-    echo "git --config -e [--global]"
-    echo "    edit the .git/config [or ~/.gitconfig] file in your $EDITOR"
-    echo ""
+  cat <<END
+git configuration
+=================
 
-    echo "git config --global user.name 'Name SecondName'"
-    echo "    sets your name"
-    echo ""
+git --config -e [--global]
+    edit the .git/config [or ~/.gitconfig] file in your \$EDITOR.
 
-    echo "git config --global user.email 'email@email.com'"
-    echo "    sets your email"
-    echo ""
+git config --global user.name 'Name SecondName'
+    sets your name.
 
-    echo "git config core.autocrlf true"
-    echo "    this setting tells git to convert the newlines to the system's standard"
-    echo "    when checking out files, and to LF newlines when committing in"
-    echo ""
+git config --global user.email 'email@email.com'
+    sets your email.
 
-    echo "git config --list"
-    echo "    prints list of all config options."
-    echo ""
+git config core.autocrlf true
+    this setting tells git to convert the newlines to the system's standard
+    when checking out files, and to LF newlines when committing in.
 
-    echo "git config apply.whitespace nowarn"
-    echo "    to ignore whitespace"
-    echo ""
+git config --list
+    prints list of all config options.
+
+git config apply.whitespace nowarn
+    to ignore whitespace.
+END
 }
 
 function init {
-    echo ""
-    echo "git repository getting and creation"
-    echo "==================================="
-    echo ""
-    
-    echo "git init"
-    echo "    create new repository in the current dir"
-    echo ""
+  cat <<END
+git repository getting and creation
+===================================
 
-    echo ""'git clone ssh://user@domain.com/repo.git'""
-    echo "    clone an existing repository to the repo dir"
-    echo ""
+git init
+    create new repository in the current dir.
 
-    echo ""'git clone ssh://user@domain.com/repo.git <my-repo>'""
-    echo "    clone an existing repository to the <my-repo> dir"
-    echo ""
+'git clone ssh://user@domain.com/repo.git'
+    clone an existing repository to the repo dir.
 
-    echo ""'git clone ssh://user@domain.com/repo.git --branch <my-branch>'""
-    echo "    clone an existing repository to the repo dir with checkouting <my-branch> instead of the remote's HEAD"
-    echo ""
+'git clone ssh://user@domain.com/repo.git <my-repo>'
+    clone an existing repository to the <my-repo> dir.
 
-    echo ""'git clone ssh://user@domain.com/repo.git --depth 1'""
-    echo "    clone an existing repository to the repo dir without history only with last commit"
-    echo ""
+'git clone ssh://user@domain.com/repo.git --branch <my-branch>'
+    clone an existing repository to the repo dir with checkouting <my-branch>
+    instead of the remote's HEAD.
+
+'git clone ssh://user@domain.com/repo.git --depth 1'
+    clone an existing repository to the repo dir without history only with last
+    commit.
+END
 }
 
 function add {
-    echo ""
-    echo "adding files to the git"
-    echo "======================="
-    echo ""
+  cat <<END
+adding files to the git
+=======================
 
-    echo "git add <file1> <file2> ..."
-    echo "    add <file1>, <file2>, etc... to the project"
-    echo ""
+git add <file1> <file2> ...
+    add <file1>, <file2>, etc... to the project.
 
-    echo "git add <dir>"
-    echo "    add <dir> to the project"
-    echo ""
+git add <dir>
+    add <dir> to the project.
 
-    echo "git add ."
-    echo "    add all files besides included in .gitignore"
-    echo ""
+git add .
+    add all files besides included in .gitignore.
 
-    echo "git add -i"
-    echo "    add modified contents in the working tree interactively to the index."
-    echo ""
+git add -i
+    add modified contents in the working tree interactively to the index.
+END
 }
 
 function delete {
-    echo ""
-    echo "deleting files from the git repository"
-    echo "======================================"
-    echo ""
+  cat <<END
+deleting files from the git repository
+======================================
 
-    echo "git rm <file1> <file2> ..."
-    echo "    remove <file1>, <file2>, etc... from the project"
-    echo ""
+git rm <file1> <file2> ...
+    remove <file1>, <file2>, etc... from the project.
 
-    echo "git rm "'$(git ls-files --deleted)'""
-    echo "    remove all deleted files from the project"
-    echo ""
+git rm '$(git ls-files --deleted)'
+    remove all deleted files from the project.
 
-    echo "git rm --cached <file1> <file2> ..."
-    echo "    only remove from the index"
-    echo ""
+git rm --cached <file1> <file2> ...
+    only remove from the index.
 
-    echo "git rm -r <dir>"
-    echo "    remove <dir> from the project"
-    echo ""
+git rm -r <dir>
+    remove <dir> from the project.
+END
 }
 
 function commit {
-    echo ""
-    echo "git commiting"
-    echo "============="
-    echo ""
+  cat <<END
+git commiting
+=============
 
-    echo "git commit <file1> <file2> ... [-m <msg>]"
-    echo "    commit <file1>, <file2>, etc..., optionally using commit message <msg>."
-    echo "    otherwise opening your editor to let you type a commit message"
-    echo ""
+git commit <file1> <file2> ... [-m <msg>]
+    commit <file1>, <file2>, etc..., optionally using commit message <msg>.
+    otherwise opening your editor to let you type a commit message.
 
-    echo "git commit -a"
-    echo "    commit all files changed since your last commit"
-    echo ""
+git commit -a
+    commit all files changed since your last commit.
 
-    echo "git commit -v"
-    echo "    commit verbosely, i.e. includes the diff of the contents being committed in"
-    echo "    the commit message screen"
-    echo ""
+git commit -v
+    commit verbosely, i.e. includes the diff of the contents being committed in
+    the commit message screen.
+END
 }
 
 function branch {
-    echo ""
-    echo "git branching"
-    echo "============="
-    echo ""
+  cat <<END
+git branching
+=============
 
-    echo "git branch"
-    echo "    list all local branches"
-    echo "" 
+git branch
+    list all local branches.
 
-    echo "git branch -r"
-    echo "    list all remote branches"
-    echo "" 
+git branch -r
+    list all remote branches.
 
-    echo "git branch -a"
-    echo "    list all local and remote branches"
-    echo "" 
+git branch -a
+    list all local and remote branches.
 
-    echo "git branch <branch>"
-    echo "    create a new branch named <branch>, referencing the same point in history as"
-    echo "    the current branch"
-    echo "" 
+git branch <branch>
+    create a new branch named <branch>, referencing the same point in history
+    as the current branch.
 
-    echo "git branch --track <branch> <remote-branch>"
-    echo "    create a tracking branch. Will push/pull changes to/from another repository."
-    echo "" 
+git branch --track <branch> <remote-branch>
+    create a tracking branch. Will push/pull changes to/from another
+    repository.
 
-    echo "git branch --set-upstream <branch> <remote-branch>"
-    echo "    make an existing branch track a remote branch"
-    echo "" 
+git branch --set-upstream <branch> <remote-branch>
+    make an existing branch track a remote branch.
 
-    echo "git branch -d <branch>"
-    echo "    remove local branch"
-    echo "" 
+git branch -d <branch>
+    remove local branch.
 
-    echo "git branch -r -d <remote-branch>"
-    echo "    delete a remote tracking branch"
-    echo "" 
+git branch -r -d <remote-branch>
+    delete a remote tracking branch.
 
-    echo "git checkout <branch>"
-    echo "    make the current branch - <branch>"
-    echo "" 
+git checkout <branch>
+    make the current branch - <branch>.
 
-    echo "git checkout -b <new> <start-point>"
-    echo "    create a new branch <new> referencing <start-point>, and check it out."
-    echo "" 
+git checkout -b <new> <start-point>
+    create a new branch <new> referencing <start-point>, and check it out.
 
-    echo "git push :<branch>"
-    echo "    remove remote <branch> from current repo"
-    echo "" 
+git push :<branch>
+    remove remote <branch> from current repo.
 
-    echo "git branch -r -d <remote-branch>"
-    echo "    delete a remote tracking branch"
-    echo "" 
-
+git branch -r -d <remote-branch>
+    delete a remote tracking branch.
+END
 }
 
 function merge {
-    echo ""
-    echo "git merging"
-    echo "==========="
-    echo ""
+  cat <<END
+git merging
+===========
 
-    echo "git merge <branch>"
-    echo "    merge <branch> with current branch"
-    echo ""
+git merge <branch>
+    merge <branch> with current branch.
 
-    echo "git merge <branch> --no-commit"
-    echo "    merge branch <branch> into the current branch, but do not autocommit."
-    echo ""
+git merge <branch> --no-commit
+    merge branch <branch> into the current branch, but do not autocommit.
 
-    echo "git merge <branch>"
-    echo "    merge <branch> with current branch"
-    echo ""
+git merge <branch>
+    merge <branch> with current branch.
+END
 }
 
 function update {
-    echo ""
-    echo "updating current repository"
-    echo "==========================="
-    echo ""
+  cat <<END
+updating current repository
+===========================
 
-    echo "git fetch <remote>"
-    echo "    update the remote-tracking branches for <remote> (defaults to "'origin'")."
-    echo "    Does not initiate a merge into the current branch"
-    echo ""
+git fetch <remote>
+    update the remote-tracking branches for <remote> (defaults to 'origin').
+    Does not initiate a merge into the current branch.
 
-    echo "git pull"
-    echo "    fetch changes from the server, and merge them into the current branch."
-    echo ""
+git pull
+    fetch changes from the server, and merge them into the current branch.
 
-    echo "git push"
-    echo "    merge <branch> with current branch"
-    echo ""
+git push
+    merge <branch> with current branch.
 
-    echo "git push origin <branch>"
-    echo "    update the server with your commits across all branches that are common"
-    echo "    between your local copy and the server."
-    echo ""
+git push origin <branch>
+    update the server with your commits across all branches that are common
+    between your local copy and the server.
+END
 }
 
 function stash {
-    echo ""
-    echo "git stashing"
-    echo "============"
-    echo ""
+  cat <<END
+git stashing
+============
 
-    echo "git stash"
-    echo "    save your local modifications to a new stash"
-    echo ""
+git stash
+    save your local modifications to a new stash.
 
-    echo "git stash save <optional-name>"
-    echo "    save your local modifications to a new stash with <optional-name>"
-    echo ""
+git stash save <optional-name>
+    save your local modifications to a new stash with <optional-name>.
 
-    echo "git stash apply"
-    echo "    restore the changes recorded in the stash on top of the current working tree state"
-    echo ""
+git stash apply
+    restore the changes recorded in the stash on top of the current working
+    tree state.
 
-    echo "git stash pop"
-    echo "    restore the changes from the most recent stash"
-    echo ""
+git stash pop
+    restore the changes from the most recent stash.
 
-    echo "git stash list"
-    echo "    list all current stashes"
-    echo ""
+git stash list
+    list all current stashes.
 
-    echo "git stash drop <stash-name>"
-    echo "    delete the stash with <stash-name>"
-    echo ""
+git stash drop <stash-name>
+    delete the stash with <stash-name>.
 
-    echo "git stash clear"
-    echo "    delete all current stashes"
-    echo ""
-
+git stash clear
+    delete all current stashes.
+END
 }
 
 function inspect {
-    echo ""
-    echo "getting info about git repository"
-    echo "================================="
-    echo ""
+  cat <<END
+getting info about git repository
+=================================
 
-    echo "git log"
-    echo "    show recent commits, most recent on top. Useful options:"
-    echo "    --color       with color"
-    echo "    --graph       with an ASCII-art commit graph on the left"
-    echo "    --decorate    with branch and tag names on appropriate commits"
-    echo "    --stat        with stats (files changed, insertions, and deletions)"
-    echo "    -p            with full diffs"
-    echo "    --author=foo  only by a certain author"
-    echo "    --after="'MMM DD YYYY'" ex. ("'un 20 2008'") only commits after a certain date"
-    echo "    --before="'MMM DD YYYY'" only commits that occur before a certain date"
-    echo "    --merge       only the commits involved in the current merge conflicts"
-    echo ""
+git log
+    show recent commits, most recent on top. Useful options:
+    --color       with color
+    --graph       with an ASCII-art commit graph on the left
+    --decorate    with branch and tag names on appropriate commits
+    --stat        with stats (files changed, insertions, and deletions)
+    -p            with full diffs
+    --author=foo  only by a certain author
+    --after='MMM DD YYYY' ex. ('un 20 2008') only commits after a certain date
+    --before='MMM DD YYYY' only commits that occur before a certain date
+    --merge       only the commits involved in the current merge conflicts
 
-    echo "git status"
-    echo "    show files added to the staging area, files with changes, and untracked files"
-    echo ""
+git status
+    show files added to the staging area, files with changes, and untracked
+    files.
 
-    echo "git diff"
-    echo "    show a diff of the changes made since your last commit"
-    echo ""
+git diff
+    show a diff of the changes made since your last commit.
 
-    echo "git log <ref1>..<ref2>"
-    echo "    show commits between the <ref1> and <ref2>."
-    echo ""
+git log <ref1>..<ref2>
+    show commits between the <ref1> and <ref2>.
 
-    echo "git log number"
-    echo "    show last number commits"
-    echo ""
+git log number
+    show last number commits.
 
-    echo "git show <rev>"
-    echo "    show the changeset (diff) of a commit specified by <rev>"
-    echo ""
+git show <rev>
+    show the changeset (diff) of a commit specified by <rev>.
 
-    echo "git show --name-only <rev>"
-    echo "    show only the names of the files that changed, no diff information."
-    echo ""
+git show --name-only <rev>
+    show only the names of the files that changed, no diff information.
 
-    echo "git ls-files"
-    echo "    list all files in the index and under version control."
-    echo "" 
+git ls-files
+    list all files in the index and under version control.
+END
 }
 
 function remote {
-    echo ""
-    echo "git remotes"
-    echo "==========="
-    echo ""
-    
-    echo "git remote add <remote> <remote_URL>"
-    echo "    adds a remote repository to your git config."
-    echo "" 
+  cat <<END
+git remotes
+===========
 
-    echo "git push <repository> +<remote>:<new_remote>"
-    echo "    replace a <remote> branch with <new_remote>."
-    echo "" 
+git remote add <remote> <remote_URL>
+    adds a remote repository to your git config.
 
-    echo "git remote add -t master -m master origin git://example.com/git.git/"
-    echo "    add a remote and track its master."
-    echo "" 
+git push <repository> +<remote>:<new_remote>
+    replace a <remote> branch with <new_remote>.
 
-    echo "git remote show <remote>"
-    echo "    show information about remote server."
-    echo "" 
+git remote add -t master -m master origin git://example.com/git.git/
+    add a remote and track its master.
 
-    echo "git checkout -b <local branch> <remote>/<remote branch>"
-    echo "    Track a remote branch as a local branch."
-    echo "" 
+git remote show <remote>
+    show information about remote server.
+
+git checkout -b <local branch> <remote>/<remote branch>
+    Track a remote branch as a local branch.
+END
 }
 
 function patch {
-    echo ""
-    echo "git patching"
-    echo "============"
-    echo ""
+  cat <<END
+git patching
+============
 
-    echo "git format-patch HEAD^"
-    echo "    generate the last commit as a patch that can be applied on another"
-    echo "    clone (or branch) using 'git am'.."
-    echo ""
+git format-patch HEAD^
+    generate the last commit as a patch that can be applied on another
+    clone (or branch) using 'git am'.
 
-    echo "git format-patch <rev>^..<rev>"
-    echo "    generate a patch for a single commit."
-    echo "" 
+git format-patch <rev>^..<rev>
+    generate a patch for a single commit.
 
-    echo "git am <patch file>"
-    echo "    apply the patch file generated by format-patch.."
-    echo "" 
+git am <patch file>
+    apply the patch file generated by format-patch.
 
-    echo "git diff --no-prefix > patchfile"
-    echo "    generate a patch file that can be applied using patch: patch -p0 < patchfile."
-    echo ""
+git diff --no-prefix > patchfile
+    generate a patch file that can be applied using patch: patch -p0 <
+    patchfile.
+END
 }
 
 function debug {
-    echo ""
-    echo "git debugging"
-    echo "============="
-    echo ""
+  cat <<END
+git debugging
+=============
 
-    echo "git blame <file>"
-    echo "    show who authored each line in <file>"
-    echo "" 
+git blame <file>
+    show who authored each line in <file>.
 
-    echo "git blame <file> <rev>"
-    echo "    show who authored each line in <file> as of <rev>"
-    echo "" 
+git blame <file> <rev>
+    show who authored each line in <file> as of <rev>.
 
-    echo "git grep -e <regexp> <my_other_branch> -- '*.erl'"
-    echo "    search for our regexp in erlang files from <my-another-branch>"
-    echo "" 
+git grep -e <regexp> <my_other_branch> -- '*.erl'
+    search for our regexp in erlang files from <my-another-branch>.
 
-    echo "git grep --cached -e <regexp>"
-    echo "    search files registered in the index, rather than the working tree"
-    echo "" 
+git grep --cached -e <regexp>
+    search files registered in the index, rather than the working tree.
 
-    echo "git log -G <regexp>"
-    echo "    search for commits whose changes include your regexp"
-    echo "" 
+git log -G <regexp>
+    search for commits whose changes include your regexp.
 
+END
 }
 
 function email {
-    echo ""
-    echo "git email"
-    echo "========="
-    echo ""
+  cat <<END
+git email
+=========
 
-    echo "git send-email -1"
-    echo "    send last commit from the current branch"
-    echo ""
+git send-email -1
+    send last commit from the current branch.
 
-    echo "git send-email -1 <rev>"
-    echo "    send commit with hash - <rev>"
-    echo ""
+git send-email -1 <rev>
+    send commit with hash - <rev>.
 
-    echo "git send-email configuration:"
-    echo "    git config --global sendemail.smtpencryption tls"
-    echo "    git config --global sendemail.smtpserver mail.smtp.com"
-    echo "    git config --global sendemail.smtpuser user@email.com"
-    echo "    git config --global sendemail.smtpserverport 587"
-    echo "    git config --global sendemail.smtppass password"
-    echo "    git config sendemail.to patch@lists.org"
-    echo ""
+git send-email configuration:
+    git config --global sendemail.smtpencryption tls
+    git config --global sendemail.smtpserver mail.smtp.com
+    git config --global sendemail.smtpuser user@email.com
+    git config --global sendemail.smtpserverport 587
+    git config --global sendemail.smtppass password
+    git config sendemail.to patch@lists.org
+END
 }
 
 function tags {
-    echo ""
-    echo "git tags"
-    echo "========"
-    echo ""
+  cat <<END
+git tags
+========
 
-    echo "git tag -l"
-    echo "    list all tags defined in the repository"
-    echo ""
+git tag -l
+    list all tags defined in the repository.
 
-    echo "git co <tag_name>"
-    echo "    checkout the code for a particular tag"
-    echo ""
+git co <tag_name>
+    checkout the code for a particular tag.
 
-    echo "git tag -a -m "'Tagging release 1.0'" v1.0"
-    echo "    create tag with message"
-    echo ""
+git tag -a -m 'Tagging release 1.0' v1.0
+    create tag with message.
 
-    echo "git tag -d <tag>"
-    echo "    remove local tag <tag>"
-    echo ""
+git tag -d <tag>
+    remove local tag <tag>.
 
-    echo "git push origin --tags"
-    echo "    push local tags to the remote server"
-    echo ""
+git push origin --tags
+    push local tags to the remote server.
 
-    echo "git push origin :refs/tags/<tag>"
-    echo "    remove tag <tag> from remote server"
-    echo ""
-
+git push origin :refs/tags/<tag>
+    remove tag <tag> from remote server.
+END
 }
 
 function reset {
-    echo ""
-    echo "git reseting"
-    echo "============"
-    echo ""
+  cat <<END
+git reseting
+============
 
-    echo "git reset HEAD <file1> <file2> ..."
-    echo "    remove the specified files from the next commit"
-    echo "" 
+git reset HEAD <file1> <file2> ...
+    remove the specified files from the next commit.
+END
 }
 
 function conflict {
-    echo ""
-    echo "git conflicts fixing"
-    echo "===================="
-    echo ""
+  cat <<END
+git conflicts fixing
+====================
 
-    echo "git mergetool"
-    echo "    work through conflicted files by opening them in your mergetool"
-    echo "" 
-
+git mergetool
+    work through conflicted files by opening them in your mergetool.
+END
 }
 
 function revert {
-    echo ""
-    echo "git reverting"
-    echo "============="
-    echo ""
+  cat <<END
+git reverting
+=============
 
-    echo "git revert <rev>"
-    echo "    reverse commit specified by <rev> and commit the result."
-    echo "" 
+git revert <rev>
+    reverse commit specified by <rev> and commit the result..
 
-    echo "git checkout <file>"
-    echo "    re-checkout <file>, overwriting any local changes"
-    echo ""
+git checkout <file>
+    re-checkout <file>, overwriting any local changes.
 
-    echo "git checkout -- <file>"
-    echo "    undo last changes in unstaged <file>"
-    echo ""
-    
-    echo "git checkout ."
-    echo "    recheckout all files"
-    echo "" 
+git checkout -- <file>
+    undo last changes in unstaged <file>.
+
+git checkout .
+    recheckout all files.
+END
 }
 
 function fix-mistakes {
-    echo ""
-    echo "fixing mistakes"
-    echo "==============="
-    echo ""
+  cat <<END
+fixing mistakes
+===============
 
-    echo "git reset --hard"
-    echo "    abandon everything since your last commit"
-    echo "" 
-    
-    echo "git reset --soft HEAD^"
-    echo "    undo your last commit, but keep the changes in the staging area for editing."
-    echo "" 
+git reset --hard
+    abandon everything since your last commit.
 
-    echo "git commit --amend"
-    echo "    redo previous commit, including changes you've staged in the meantime."
-    echo ""
-    
+git reset --soft HEAD^
+    undo your last commit, but keep the changes in the staging area for
+    editing.
+
+git commit --amend
+    redo previous commit, including changes you've staged in the meantime.
+END
 }
 
 function submodules {
-    echo ""
-    echo "git submodules"
-    echo "================="
-    echo ""
+  cat <<END
+git submodules
+=================
 
-    echo "git submodule add <remote_repository> <path/to/submodule"
-    echo "    add the given repository at the given path."
-    echo "" 
+git submodule add <remote_repository> <path/to/submodule
+    add the given repository at the given path.
 
-    echo "git submodule update [--init]"
-    echo "    update the registered submodules (clone missing submodules, and checkout"
-    echo "    the commit specified by the super-repo)"
-    echo "" 
+git submodule update [--init]
+    update the registered submodules (clone missing submodules, and checkout
+    the commit specified by the super-repo).
 
-    echo "removing submodules:"
-    echo "    1. Delete the relevant line from the .gitmodules file"
-    echo "    2. Delete the relevant section from .git/config"
-    echo "    3. Run git rm --cached path_to_submodule"
-    echo "    4. Commit and delete the now untracked submodule files"
-    echo "" 
+removing submodules:
+    1. Delete the relevant line from the .gitmodules file
+    2. Delete the relevant section from .git/config
+    3. Run git rm --cached path_to_submodule
+    4. Commit and delete the now untracked submodule files
 
-    echo "Updating git submodule"
-    echo "    cd <path to submodule>"
-    echo "    git pull"
-    echo "    cd <path to toplevel>"
-    echo "    git commit -m "'update submodule version'""
-    echo "    recheckout all files"
-    echo ""
+Updating git submodule
+    cd <path to submodule>
+    git pull
+    cd <path to toplevel>
+    git commit -m 'update submodule version'
+    recheckout all files
+END
 }
 
 function archive {
-    echo ""
-    echo "archive your git repository"
-    echo "==========================="
-    echo ""
+  cat <<END
+archive your git repository
+===========================
 
-    echo "git checkout ."
-    echo "    recheckout all files"
-    echo "" 
+git checkout .
+    recheckout all files.
 
-    echo "git checkout ."
-    echo "    recheckout all files"
-    echo "" 
+git checkout .
+    recheckout all files.
 
-    echo "git checkout ."
-    echo "    recheckout all files"
-    echo "" 
+git checkout .
+    recheckout all files.
+END
 }
 
 case "$ARG" in
@@ -675,7 +583,7 @@ case "$ARG" in
         usage
         ;;
     --version | -v)
-        echo "git-cheat-1.0"
+    echo "git-cheat-1.0"
         ;;
     *)
         usage
