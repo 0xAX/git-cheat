@@ -76,6 +76,7 @@ todo
   * add github cheats
   * add missed git cheats
   * more plumbing git cheats
+  * add bash completion
 
 contribution
 ------------
