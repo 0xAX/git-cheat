@@ -1,6 +1,8 @@
 git-cheat
 ==========
 
+Because i like git, but uit has too many commands.
+
 `git-cheat` is a dependency free git helper in your command-line. Of course here is not full list of git commands and their keys, here is the set of commands which i'm using almost every day. If i'm missing something, please, feel free to contribute.
 
 usage
