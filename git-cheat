@@ -24,6 +24,7 @@ $GREEN  --delete -d       $NO_COLOR --> deleting files from git $NO_COLOR
 $GREEN  --commit -cm      $NO_COLOR --> git commit helper $NO_COLOR
 $GREEN  --branch -b       $NO_COLOR --> git branching info $NO_COLOR
 $GREEN  --merge -m        $NO_COLOR --> git merging info $NO_COLOR
+$GREEN  --rebase -rb      $NO_COLOR --> git rebase info $NO_COLOR
 $GREEN  --update -u       $NO_COLOR --> updating current repo $NO_COLOR
 $GREEN  --stash -st       $NO_COLOR --> stashing in current repo $NO_COLOR
 $GREEN  --inspect -in     $NO_COLOR --> git inspection, log,show... $NO_COLOR
