@@ -1,9 +1,9 @@
 git-cheat
 ==========
 
-Because i like git, but it has too many commands.
+Because I like git, but it has too many commands.
 
-`git-cheat` is a dependency free git helper in your command-line. Of course here is not full list of git commands and their keys, here is the set of commands which i'm using almost every day. If i'm missing something, please, feel free to contribute.
+`git-cheat` is a dependency free git helper in your command-line. Of course here is not full list of git commands and their keys, here is the set of commands which I'm using almost every day. If I'm missing something, please, feel free to contribute.
 
 usage
 --------
@@ -81,7 +81,7 @@ todo
 contribution
 ------------
 
-if i missed something you can easily to contribute to `git-cheat`:
+if I missed something you can easily to contribute to `git-cheat`:
 
   * Fork [repo](https://github.com/0xAX/git-cheat)
   * Make you changes
