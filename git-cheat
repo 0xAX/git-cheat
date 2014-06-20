@@ -24,6 +24,7 @@ $GREEN  --delete -d       $NO_COLOR --> deleting files from git $NO_COLOR
 $GREEN  --commit -cm      $NO_COLOR --> git commit helper $NO_COLOR
 $GREEN  --branch -b       $NO_COLOR --> git branching info $NO_COLOR
 $GREEN  --merge -m        $NO_COLOR --> git merging info $NO_COLOR
+$GREEN  --rebase -rb      $NO_COLOR --> git rebase info $NO_COLOR
 $GREEN  --update -u       $NO_COLOR --> updating current repo $NO_COLOR
 $GREEN  --stash -st       $NO_COLOR --> stashing in current repo $NO_COLOR
 $GREEN  --inspect -in     $NO_COLOR --> git inspection, log,show... $NO_COLOR
@@ -213,6 +214,25 @@ git merge <branch>
 END
 }
 
+function rebase {
+  cat <<END
+git rebase
+==========
+
+git rebase <branch>
+    rebase <branch> with current branch
+
+git rebase master <branch>
+    rebase branch <branch> into the current branch
+
+git rebase --continue
+    Restart the rebasing process after having resolved a merge conflict.
+
+git rebase --abort
+    Alternatively, you can undo the git rebase with option --abort.
+END
+}
+
 function update {
   cat <<END
 updating current repository
@@ -366,7 +386,6 @@ git grep --cached -e <regexp>
 
 git log -G <regexp>
     search for commits whose changes include your regexp.
-
 END
 }
 
@@ -536,6 +555,9 @@ case "$ARG" in
         ;;
     --merge | -m)
         merge
+        ;;
+    --rebase | -rb)
+        rebase
         ;;
     --update | -u)
         update
