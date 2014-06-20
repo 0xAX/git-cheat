@@ -18,7 +18,7 @@ Usage: git-cheat [option]
 Mandatory arguments:
 
 $GREEN  --config -c       $NO_COLOR --> git configuration $NO_COLOR
-$GREEN  --init -i         $NO_COLOR --> cration of new project $NO_COLOR
+$GREEN  --init -i         $NO_COLOR --> creation of new project $NO_COLOR
 $GREEN  --add -a          $NO_COLOR --> adding files to git $NO_COLOR
 $GREEN  --delete -d       $NO_COLOR --> deleting files from git $NO_COLOR
 $GREEN  --commit -cm      $NO_COLOR --> git commit helper $NO_COLOR
