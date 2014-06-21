@@ -11,7 +11,7 @@ usage
 1. Clone `git-cheat` with:
 
 ```
-git clone git@github.com:0xAX/git-cheat.git
+git clone https://github.com/0xAX/git-cheat.git
 ```
 
 2. Install it to any place which is in your `$PATH`
@@ -82,7 +82,7 @@ todo
 contribution
 ------------
 
-if I missed something you can easily to contribute to `git-cheat`:
+If I missed something you can easily to contribute to `git-cheat`:
 
   * Fork [repo](https://github.com/0xAX/git-cheat)
   * Make you changes
