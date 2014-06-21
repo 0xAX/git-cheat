@@ -17,12 +17,12 @@ usage
 git clone git@github.com:0xAX/git-cheat.git
 ```
 
-2. Install it to any place which is in your `$PATH`
+2. Move the `git-cheat` file into a directory which is in your `$PATH`
 
 3. Try to use:
 
 ```shell
-./git-cheat
+git-cheat
 Usage: git-cheat [option]
 
 Mandatory arguments:
