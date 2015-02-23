@@ -52,7 +52,7 @@ function config {
 git configuration
 =================
 
-git --config -e [--global]
+git config -e [--global]
     edit the .git/config [or ~/.gitconfig] file in your \$EDITOR.
 
 git config --global user.name 'Name SecondName'
