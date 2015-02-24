@@ -36,7 +36,7 @@ $GREEN  --tags -t         $NO_COLOR --> git tags helper $NO_COLOR
 $GREEN  --reset -rs       $NO_COLOR --> git reset helper $NO_COLOR
 $GREEN  --conflict -cn    $NO_COLOR --> git conflict resolving helper $NO_COLOR
 $GREEN  --revert -rv      $NO_COLOR --> git reverting helper $NO_COLOR
-$GREEN  --fix-mistakes -f $NO_COLOR --> fix mistakes in git $NO_COLOR
+$GREEN  --fix-mistakes -fm$NO_COLOR --> fix mistakes in git $NO_COLOR
 $GREEN  --submodules -sm  $NO_COLOR --> git submodules helper $NO_COLOR
 $GREEN  --archive -ar     $NO_COLOR --> archive your repo $NO_COLOR
 
@@ -124,7 +124,7 @@ deleting files from the git repository
 git rm <file1> <file2> ...
     remove <file1>, <file2>, etc... from the project.
 
-git rm '$(git ls-files --deleted)'
+git rm '\$(git ls-files --deleted)'
     remove all deleted files from the project.
 
 git rm --cached <file1> <file2> ...
@@ -496,7 +496,7 @@ function submodules {
 git submodules
 =================
 
-git submodule add <remote_repository> <path/to/submodule
+git submodule add <remote_repository> <path/to/submodule>
     add the given repository at the given path.
 
 git submodule update [--init]
