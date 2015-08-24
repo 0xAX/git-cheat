@@ -26,7 +26,7 @@ Usage: git-cheat [option]
 Mandatory arguments:
 
   --setup -s          --> git setup and configuration
-  --init -i           --> cration of new project
+  --init -i           --> creation of new project
   --add -a            --> adding files to git
   --delete -d         --> deleting files from git
   --commit -c         --> git commit helper
