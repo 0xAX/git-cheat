@@ -203,9 +203,6 @@ function merge {
 git merging
 ===========
 
-git merge <branch>
-    merge <branch> with current branch.
-
 git merge <branch> --no-commit
     merge branch <branch> into the current branch, but do not autocommit.
 
