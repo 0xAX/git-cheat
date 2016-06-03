@@ -81,17 +81,17 @@ git repository getting and creation
 git init
     create new repository in the current dir.
 
-'git clone ssh://user@domain.com/repo.git'
+git clone ssh://user@domain.com/repo.git
     clone an existing repository to the repo dir.
 
-'git clone ssh://user@domain.com/repo.git <my-repo>'
+git clone ssh://user@domain.com/repo.git <my-repo>
     clone an existing repository to the <my-repo> dir.
 
-'git clone ssh://user@domain.com/repo.git --branch <my-branch>'
+git clone ssh://user@domain.com/repo.git --branch <my-branch>
     clone an existing repository to the repo dir with checkouting <my-branch>
     instead of the remote's HEAD.
 
-'git clone ssh://user@domain.com/repo.git --depth 1'
+git clone ssh://user@domain.com/repo.git --depth 1
     clone an existing repository to the repo dir without history only with last
     commit.
 END
@@ -223,10 +223,10 @@ git rebase master <branch>
     rebase branch <branch> into the current branch
 
 git rebase --continue
-    Restart the rebasing process after having resolved a merge conflict.
+    restart the rebasing process after having resolved a merge conflict.
 
 git rebase --abort
-    Alternatively, you can undo the git rebase with option --abort.
+    alternatively, you can undo the git rebase with option --abort.
 END
 }
 
@@ -339,7 +339,7 @@ git remote show <remote>
     show information about remote server.
 
 git checkout -b <local branch> <remote>/<remote branch>
-    Track a remote branch as a local branch.
+    track a remote branch as a local branch.
 END
 }
 
@@ -491,7 +491,7 @@ END
 function submodules {
   cat <<END
 git submodules
-=================
+==============
 
 git submodule add <remote_repository> <path/to/submodule>
     add the given repository at the given path.
