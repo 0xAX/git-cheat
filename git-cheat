@@ -520,14 +520,12 @@ function archive {
 archive your git repository
 ===========================
 
-git checkout .
-    recheckout all files.
+git archive -l
+    show all available archive formats.
 
-git checkout .
-    recheckout all files.
-
-git checkout .
-    recheckout all files.
+git archive -o <output> <branch>
+    create an archive named <output> that contains the contents of <branch>.
+    the output format is inferred by the extension of <output>.
 END
 }
 
