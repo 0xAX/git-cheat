@@ -113,6 +113,13 @@ git add .
 
 git add -i
     add modified contents in the working tree interactively to the index.
+
+git add -A
+    add, modify and remove index entries to match the current working tree.
+
+git add -u
+    modify or remove index entries to match the current working tree. It adds no new files.
+
 END
 }
 
@@ -301,6 +308,10 @@ git status
     show files added to the staging area, files with changes, and untracked
     files.
 
+git status -uno
+    show files added to the staging area, files with changes, but no untracked
+    files.
+
 git diff
     show a diff of the changes made since your last commit.
 
@@ -318,6 +329,13 @@ git show --name-only <rev>
 
 git ls-files
     list all files in the index and under version control.
+
+git ls-files -m
+    list modified files in the index and under version control.
+
+git ls-files -m -o --exclude-standard
+    list modified files, untracked files, excluding files in the standard ignored lists.
+
 END
 }
 
