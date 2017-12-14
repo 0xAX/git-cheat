@@ -39,6 +39,7 @@ $GREEN  --revert -rv      $NO_COLOR --> git reverting helper $NO_COLOR
 $GREEN  --fix-mistakes -fm$NO_COLOR --> fix mistakes in git $NO_COLOR
 $GREEN  --submodules -sm  $NO_COLOR --> git submodules helper $NO_COLOR
 $GREEN  --archive -ar     $NO_COLOR --> archive your repo $NO_COLOR
+$GREEN  --clean -cl       $NO_COLOR --> clean your repo $NO_COLOR
 
 $GREEN  --help -h ?       $NO_COLOR --> prints usage of git-cheat $NO_COLLOR
 $GREEN  --version -v      $NO_COLOR --> prints version of git-cheat $NO_COLOR
@@ -547,6 +548,22 @@ git archive -o <output> <branch>
 END
 }
 
+function clean {
+  cat <<END
+clean your git repository
+=========================
+
+git clean -f -d
+    deletes untracked files and directories (similar to hg purge).
+
+git clean -f -d -x
+    deletes untracked files, ignored files and directories (similar to hg purge --all).
+
+git clean -f -X
+    deletes ignored files but leaves untracked files untouched.
+END
+}
+
 case "$ARG" in
     --config | -c)
         config
@@ -613,6 +630,9 @@ case "$ARG" in
         ;;
     --archive | -ar)
         archive
+        ;;
+    --clean | -cl)
+        clean
         ;;
     --help | -h)
         usage
