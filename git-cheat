@@ -316,6 +316,10 @@ git status -uno
 git diff
     show a diff of the changes made since your last commit.
 
+git diff <rev>^ <rev>
+    show a diff between rev and rev's ancestor, without commit info. Similar
+    to 'git show <rev>', but this also includes commit info.
+
 git log <ref1>..<ref2>
     show commits between the <ref1> and <ref2>.
 
