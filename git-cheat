@@ -322,6 +322,13 @@ git log <ref1>..<ref2>
 git log number
     show last number commits.
 
+git log --oneline --decorate --all --graph
+    text-based graphical representation of the commit history on the left
+    hand side of the output.
+
+git log --all --grep='Some commit text'
+    search the log (across all branches) for the given commit text.
+
 git show <rev>
     show the changeset (diff) of a commit specified by <rev>.
 
