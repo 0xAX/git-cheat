@@ -39,6 +39,7 @@ $GREEN  --revert -rv      $NO_COLOR --> git reverting helper $NO_COLOR
 $GREEN  --fix-mistakes -fm$NO_COLOR --> fix mistakes in git $NO_COLOR
 $GREEN  --submodules -sm  $NO_COLOR --> git submodules helper $NO_COLOR
 $GREEN  --archive -ar     $NO_COLOR --> archive your repo $NO_COLOR
+$GREEN  --clean -cl       $NO_COLOR --> clean your repo $NO_COLOR
 
 $GREEN  --help -h ?       $NO_COLOR --> prints usage of git-cheat $NO_COLLOR
 $GREEN  --version -v      $NO_COLOR --> prints version of git-cheat $NO_COLOR
@@ -113,6 +114,13 @@ git add .
 
 git add -i
     add modified contents in the working tree interactively to the index.
+
+git add -A
+    add, modify and remove index entries to match the current working tree.
+
+git add -u
+    modify or remove index entries to match the current working tree. It adds no new files.
+
 END
 }
 
@@ -301,14 +309,29 @@ git status
     show files added to the staging area, files with changes, and untracked
     files.
 
+git status -uno
+    show files added to the staging area, files with changes, but no untracked
+    files.
+
 git diff
     show a diff of the changes made since your last commit.
+
+git diff <rev>^ <rev>
+    show a diff between rev and rev's ancestor, without commit info. Similar
+    to 'git show <rev>', but this also includes commit info.
 
 git log <ref1>..<ref2>
     show commits between the <ref1> and <ref2>.
 
 git log number
     show last number commits.
+
+git log --oneline --decorate --all --graph
+    text-based graphical representation of the commit history on the left
+    hand side of the output.
+
+git log --all --grep='Some commit text'
+    search the log (across all branches) for the given commit text.
 
 git show <rev>
     show the changeset (diff) of a commit specified by <rev>.
@@ -318,6 +341,13 @@ git show --name-only <rev>
 
 git ls-files
     list all files in the index and under version control.
+
+git ls-files -m
+    list modified files in the index and under version control.
+
+git ls-files -m -o --exclude-standard
+    list modified files, untracked files, excluding files in the standard ignored lists.
+
 END
 }
 
@@ -529,6 +559,22 @@ git archive -o <output> <branch>
 END
 }
 
+function clean {
+  cat <<END
+clean your git repository
+=========================
+
+git clean -f -d
+    deletes untracked files and directories (similar to hg purge).
+
+git clean -f -d -x
+    deletes untracked files, ignored files and directories (similar to hg purge --all).
+
+git clean -f -X
+    deletes ignored files but leaves untracked files untouched.
+END
+}
+
 case "$ARG" in
     --config | -c)
         config
@@ -595,6 +641,9 @@ case "$ARG" in
         ;;
     --archive | -ar)
         archive
+        ;;
+    --clean | -cl)
+        clean
         ;;
     --help | -h)
         usage
